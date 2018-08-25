@@ -1,0 +1,43 @@
+#departures {
+    font-size: 16px;
+
+}
+#departures-header {
+    height: 30px;
+
+}
+#tablica-przystanku {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+#route-number {
+    height: 100%;
+}
+#current-stop {
+    margin: 10px;
+}
+#destination-stop {
+    padding-left: 10px;
+}
+
+#rozkład {
+    display: block;
+    height: 100px;
+    position: relative;
+    top: 20px;
+}
+
+.container {
+    display: inline;
+}
+
+#destination-stop div:nth-child(2){
+    text-align: left;
+}
+
+#hours {
+    position: relative;
+    left: 3%;
+}
