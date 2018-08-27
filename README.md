@@ -5,6 +5,7 @@ This creating this project via React framework. It will show departures and arri
 - Stations available:
   - Gdańsk
     - Politechnika
+    - Wrzeszcz
   - Sopot
     - n/a
   - Gdynia
