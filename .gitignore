@@ -1,0 +1,20 @@
+# Webstorm
+.idea/
+
+#Dev things
+*node_modules/
+*package-lock.json
+*debug.log
+
+# misc
+*.DS_Store
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# testing
+*/coverage
+
+#build
+*/build
