@@ -7,10 +7,6 @@ import axios from 'axios';
 
 
 class Departures extends Component {
-    componentWillMount(){
-        const data = axios.get('http://localhost:8000/result')
-        // console.log(data)
-    }
 
     renderStation = () => {
         // console.log("Data in departures: ", this.props.data)

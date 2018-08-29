@@ -25,10 +25,18 @@ app.use(function(req, res, next) {
 })
 
 
-app.get('/result', function (req, res, next) {
+app.get('/result/politechnika', function (req, res, next) {
     db.collection("schelude").find().toArray(function(err, data) {
-        // console.log(data)
-        res.send(data);
+
+        res.send(data[0]);
+    });
+
+});
+
+app.get('/result/wrzeszcz', function (req, res, next) {
+    db.collection("schelude").find().toArray(function(err, data) {
+
+        res.send(data[1]);
     });
 
 });
