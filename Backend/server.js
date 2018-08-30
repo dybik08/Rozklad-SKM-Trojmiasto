@@ -41,6 +41,14 @@ app.get('/result/wrzeszcz', function (req, res, next) {
 
 });
 
+app.get('/result/glowny', function (req, res, next) {
+    db.collection("schelude").find().toArray(function(err, data) {
+
+        res.send(data[2]);
+    });
+
+});
+
 app.get('/', (req, res) => {
     // res.sendFile(__dirname + '/index.html')
     res.send(db.collection('schelude').find().toArray(function(err, results) {

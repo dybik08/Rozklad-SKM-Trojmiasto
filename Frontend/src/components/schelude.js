@@ -11,7 +11,7 @@ export default ({data, direction}) => {
         }
     })
 
-    console.log("Direction schelude: ", direction_schelude)
+    // console.log("Direction schelude: ", direction_schelude)
     // console.log(value, key)
 
     const renderSchelude = _.map(_.filter(direction_schelude[0], (value, key) => {
