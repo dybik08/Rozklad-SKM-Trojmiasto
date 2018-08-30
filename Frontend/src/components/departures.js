@@ -13,7 +13,7 @@ class Departures extends Component {
         if(this.props.data.length !== 0){
             return (
                 <div className="row">
-                    <div id="current-stop" className="col-12">Przystanek: {this.props.data[1] = (this.props.data[1] === 'glowny') ? 'Główny' : this.props.data[1]}</div>
+                    <div id="current-stop" className="col-12">Przystanek: Gdańsk {this.props.data[1] = (this.props.data[1] === 'glowny') ? 'Główny' : this.props.data[1]}</div>
                     <div id="departures" className="col-6">
                         <div id='departures-header'>
                             <div id="tablica-przystanku">

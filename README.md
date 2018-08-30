@@ -13,8 +13,9 @@ Technologies used in this project:
 - Stations available:
   - Gdańsk
     - Politechnika
-    - Wrzeszcz
-    - Główny
+    - Wrzeszcz( only weekdays )
+    - Główny( only weekdays )
+    - Stocznia( only weekdays )
   - Sopot
     - n/a
   - Gdynia

@@ -8,10 +8,14 @@ class SearchBar extends Component {
     constructor(props){
         super(props);
 
-        this.state = { term: '' };
+        this.state = {
+            term: '',
+            day: ''
+        };
 
         this.onInputChange = this.onInputChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onRadioChange = this.onRadioChange.bind(this);
     }
 
 
@@ -22,12 +26,18 @@ class SearchBar extends Component {
 
     onFormSubmit(event) {
         event.preventDefault();
-        this.props.fetchData(this.state.term);
-        this.setState({ term: '' });
+        this.props.fetchData(this.state.term, this.state.day);
+
+    }
+
+    onRadioChange(event){
+        this.setState({day: event.target.value});
     }
 
     render() {
+        // console.log("state: ", this.state)
         return (
+            <div>
             <form onSubmit={this.onFormSubmit} className="input-group">
                 <input
                     id="szukanaStacja"
@@ -39,6 +49,22 @@ class SearchBar extends Component {
                     <button type="submit" className="btn btn-secondary">Submit</button>
                 </span>
             </form>
+                <div className="form-check-inline">
+                    <label className="form-check-label">
+                        <input type="radio" className="form-check-input" onChange={this.onRadioChange} value="zwykly" name="optradio" />Dzień powszedni
+                    </label>
+                </div>
+                <div className="form-check-inline">
+                    <label className="form-check-label">
+                        <input type="radio" className="form-check-input" onChange={this.onRadioChange} value="sobota" name="optradio" />Sobota
+                    </label>
+                </div>
+                <div className="form-check-inline disabled">
+                    <label className="form-check-label">
+                        <input type="radio" className="form-check-input" onChange={this.onRadioChange} value="niedziela" name="optradio" />Niedziele i Święta
+                    </label>
+                </div>
+            </div>
         );
     }
 

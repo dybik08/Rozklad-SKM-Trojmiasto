@@ -21,7 +21,7 @@ export default ({data, direction}) => {
         }
 
     })[0], (value, key) => {
-        console.log('key: ',key, 'value: ', value)
+        // console.log('key: ',key, 'value: ', value)
         return (
             <li key={key} className="list-group-item">
                 <p id="godziny">{key}</p>
