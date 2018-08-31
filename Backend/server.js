@@ -31,6 +31,8 @@ const POLITECHNIKA_SOBOTA = '5b87e567e7179a7a8ccd1c20';
 const POLITECHNIKA_NIEDZIELA = '5b8811fee7179a7a8ccd3af9';
 
 const WRZESZCZ_ZWYKLY = '5b871f67e7179a3d428eec8c';
+const WRZESZCZ_SOBOTA = '5b89372ce7179a25a0bb8f3d';
+const WRZESZCZ_NIEDZIELA = '5b893f02e7179a25a0bb927b';
 
 const GDANSK_GLOWNY_ZWYKLY = '5b87b252e7179a7a8ccd05fe';
 
@@ -68,6 +70,18 @@ app.get('/result/politechnika/niedziela', function (req, res) {
 app.get('/result/wrzeszcz', function (req, res) {
     db.collection("schelude").find().toArray(function(err, data) {
         res.send(data[filterDataByID(data, WRZESZCZ_ZWYKLY)]);
+    });
+});
+
+app.get('/result/wrzeszcz/sobota', function (req, res) {
+    db.collection("schelude").find().toArray(function(err, data) {
+        res.send(data[filterDataByID(data, WRZESZCZ_SOBOTA)]);
+    });
+});
+
+app.get('/result/wrzeszcz/niedziela', function (req, res) {
+    db.collection("schelude").find().toArray(function(err, data) {
+        res.send(data[filterDataByID(data, WRZESZCZ_NIEDZIELA)]);
     });
 });
 

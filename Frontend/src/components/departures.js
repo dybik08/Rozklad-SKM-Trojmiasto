@@ -3,13 +3,11 @@ import {connect} from 'react-redux';
 import Schelude from './schelude';
 import SearchBar from './station_chooser';
 import '../static/css/departures.css';
-import axios from 'axios';
 
 
 class Departures extends Component {
 
     renderStation = () => {
-        // console.log("Data in departures: ", this.props.data)
         if(this.props.data.length !== 0){
             return (
                 <div className="row">
