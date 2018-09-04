@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser= require('body-parser');
 const _ = require('lodash');
 const app = express();
+const ObjectId = require('mongodb').ObjectId;
 
 const MongoClient = require('mongodb').MongoClient;
 
@@ -25,81 +26,44 @@ app.use(function(req, res, next) {
     next();
 });
 
-// CONSTS FOR SCHELUDE ID
-const POLITECHNIKA_ZWYKLY = '5b854447e7179a43f9adfaf5';
-const POLITECHNIKA_SOBOTA = '5b87e567e7179a7a8ccd1c20';
-const POLITECHNIKA_NIEDZIELA = '5b8811fee7179a7a8ccd3af9';
+// Object with scheludes
 
-const WRZESZCZ_ZWYKLY = '5b871f67e7179a3d428eec8c';
-const WRZESZCZ_SOBOTA = '5b89372ce7179a25a0bb8f3d';
-const WRZESZCZ_NIEDZIELA = '5b893f02e7179a25a0bb927b';
-
-const GDANSK_GLOWNY_ZWYKLY = '5b87b252e7179a7a8ccd05fe';
-
-const STOCZNIA_ZWYKLY = '5b87d5d7e7179a7a8ccd1437';
-
-// HELPER FUNCTION TO FIND SCHELUDE BY ID
-
-const filterDataByID = (data, searchedID) => {
-    return _.findKey(data, (value) => {
-        if((value._id).toString() === searchedID){
-            return true
-        }
-    })
+const SCHELUDES = {
+    Stocznia: '5b87d5d7e7179a7a8ccd1437',
+    Politechnika: '5b854447e7179a43f9adfaf5',
+    Politechnikasobota: '5b87e567e7179a7a8ccd1c20',
+    Politechnikaniedziela: '5b8811fee7179a7a8ccd3af9',
+    Wrzeszcz: '5b871f67e7179a3d428eec8c',
+    Wrzeszczsobota: '5b89372ce7179a25a0bb8f3d',
+    Wrzeszczniedziela: '5b893f02e7179a25a0bb927b',
+    Glowny: '5b87b252e7179a7a8ccd05fe',
 };
 
-// ROUTES HEREEEEEEEEEEE
-app.get('/result/politechnika', function (req, res) {
-    db.collection("schelude").find().toArray(function(err, data) {
-        res.send(data[filterDataByID(data, POLITECHNIKA_ZWYKLY)]);
-    });
-});
+// helper function to find schelude by id(using Schelude object above)
 
-app.get('/result/politechnika/sobota', function (req, res) {
-    db.collection("schelude").find().toArray(function(err, data) {
-        res.send(data[filterDataByID(data, POLITECHNIKA_SOBOTA)]);
+const filterDataByObjectID = (id, SCHELUDES) => {
+    return _.find(SCHELUDES, (value, key) => {
+        if(id === key){
+            return true
+        }
     });
-});
+};
 
-app.get('/result/politechnika/niedziela', function (req, res) {
-    db.collection("schelude").find().toArray(function(err, data) {
-        res.send(data[filterDataByID(data, POLITECHNIKA_NIEDZIELA)]);
-    });
-});
+// fineOne desired schelude
 
-app.get('/result/wrzeszcz', function (req, res) {
-    db.collection("schelude").find().toArray(function(err, data) {
-        res.send(data[filterDataByID(data, WRZESZCZ_ZWYKLY)]);
+findOne = function (req, res) {
+    const {id} = req.params;
+    db.collection("schelude").find(ObjectId(filterDataByObjectID(id, SCHELUDES))).toArray(function(err, data) {
+        res.send(data);
     });
-});
+};
 
-app.get('/result/wrzeszcz/sobota', function (req, res) {
-    db.collection("schelude").find().toArray(function(err, data) {
-        res.send(data[filterDataByID(data, WRZESZCZ_SOBOTA)]);
-    });
-});
+//Universal route here
 
-app.get('/result/wrzeszcz/niedziela', function (req, res) {
-    db.collection("schelude").find().toArray(function(err, data) {
-        res.send(data[filterDataByID(data, WRZESZCZ_NIEDZIELA)]);
-    });
-});
-
-app.get('/result/glowny', function (req, res) {
-    db.collection("schelude").find().toArray(function(err, data) {
-        res.send(data[filterDataByID(data, GDANSK_GLOWNY_ZWYKLY)]);
-    });
-});
-
-app.get('/result/stocznia', function (req, res, next) {
-    db.collection("schelude").find().toArray(function(err, data) {
-        res.send(data[filterDataByID(data, STOCZNIA_ZWYKLY)]);
-    });
-});
+app.get('/result/:id', findOne);
 
 // ROOT WILL REMAIN FOR FUTURE PURPOSES
 app.get('/', (req, res) => {
-    // res.sendFile(__dirname + '/index.html')
     res.send(db.collection('schelude').find().toArray(function(err, results) {
         return results;
     }))
@@ -109,8 +73,6 @@ app.get('/', (req, res) => {
 app.post('/schelude', (req, res) => {
     db.collection('schelude').save(req.body, (err) => {
         if (err) return console.log(err);
-
-        console.log('saved to database');
         res.redirect('/')
     })
 });
