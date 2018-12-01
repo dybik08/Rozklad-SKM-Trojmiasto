@@ -7,19 +7,19 @@ import "../static/css/theme.css";
 
 let stations = [
     {
-       name: "Politechnika"
+       name: "Gdańsk Politechnika"
     },
     {
-        name: "Wrzeszcz"
+        name: "Gdańsk Wrzeszcz"
     },
     {
-        name: "Główny"
+        name: "Gdańsk Główny"
     },
     {
-        name: "Stocznia"
+        name: "Gdańsk Stocznia"
     },
     {
-        name: "Zaspa"
+        name: "Gdańsk Zaspa"
     }
 
 ];

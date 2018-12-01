@@ -3,6 +3,7 @@ import axios from "axios/index";
 export const FETCH_DATA = 'FETCH_DATA';
 
 export const fetchData = (station, day) => {
+    station = station.split(" ")[1];
     let stationInPolish = station;
     return (dispatch) => {
         let tableOfPolishSymbols = [/ę/g, /ó/g, /ą/g, /ś/g, /ł/g, /ż/g, /ź/g, /ć/g, /ń/g];
