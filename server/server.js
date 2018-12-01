@@ -37,6 +37,9 @@ const SCHELUDES = {
     Wrzeszczsobota: '5b89372ce7179a25a0bb8f3d',
     Wrzeszczniedziela: '5b893f02e7179a25a0bb927b',
     Glowny: '5b87b252e7179a7a8ccd05fe',
+    Zaspa: '5c027e46fb6fc038cbb0a395',
+    Zaspasobota: '5c027f7bfb6fc038cbb0a3e5',
+    Zaspaniedziela: '5c027fdbfb6fc038cbb0a414'
 };
 
 // helper function to find schelude by id(using Schelude object above)

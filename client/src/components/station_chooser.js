@@ -75,7 +75,6 @@ class SearchBar extends Component {
 
     onFormSubmit(event) {
         event.preventDefault();
-        console.log(event)
         this.props.fetchData(this.state.value, this.state.day);
 
     }
